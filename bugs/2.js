@@ -38,15 +38,15 @@ export default class Bug extends React.Component {
   }
 
   addNumber() {
-    const newList = this.state.list.push(this.state.list.length)
-    this.setState({list: newList})
+    this.setState(prevState => ({list: [...prevState.list, this.state.list.length]}))
+    console.log(this.state)
   }
 
   render() {
     return (
       <View>
         <ListText list={this.state.list} />
-        <Button title="Increment" onPress={() => this.addNumber} />
+        <Button title="Increment" onPress={() => this.addNumber()} />
       </View>
     )
   }
