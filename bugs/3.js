@@ -31,14 +31,11 @@ export default class BugThree extends React.Component {
   /////
   // Do not edit anything above this line
   /////
-
-  handleOwnerChange = owner => {
-    this.setState({ message: {owner}});
+  getTextHandler = key => text => {
+    this.setState({ message: {...this.state.message, [key] : text}});
   }
-
-  handleContentChange = content => {
-    this.setState({ message: {content}});
-  }
+  handleOwnerChange = this.getTextHandler('owner')
+  handleContentChange = this.getTextHandler('content')
 
   render() {
     return (
