@@ -18,29 +18,32 @@ const BoldText = props => (
 /////
 
 export default class Bug extends React.Component {
-  greeting = {
-    value: 'Hello, world!',
-    valueChanged: false,
+  state = {
+    greeting: {
+      value: 'Hello, world!',
+      valueChanged: false,
+    }
   }
 
+
   handleGreetingChange = () => {
+    console.log('hello')
     const newGreeting = 'Howdy, sir!'
-    this.greeting = { value: newGreeting, valueChanged: true };
+    this.setState({greeting: { value: newGreeting, valueChanged: true }});
   }
 
   render() {
     return (
       <View>
         <BoldText
-          value={this.greeting.value}
+          value={this.state.greeting.value}
         />
         <Button
           title='Press me to change greeting one time'
-          disabled={this.greeting.valueChanged}
+          disabled={this.state.greeting.valueChanged}
           onPress={this.handleGreetingChange}
         />
       </View>
     );
   }
 }
-
